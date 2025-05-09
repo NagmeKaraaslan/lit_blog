@@ -10,18 +10,43 @@
 <body>
     <div class="container">
         <div class="column1">
-            <img src="{% static 'blog_app/images/image.svg' %}" class="canBlurmage" alt="'Sanatın kuralı yoktur'">
+            <h3>~Son Paylaşımlar~</h3>
+            <img src="{% static 'blog_app/images/image1.svg' %}" class="line_image" alt="'Sanatın kuralı yoktur.'">
             <div class="post">Post 1</div>
         </div>
         <div class="column2">
-
-            <div class="post">Post 2</div>
+            <img src="{% static 'blog_app/images/image.svg' %}" class="canBlurImage"
+                alt="'Ben yaratmak için yaratıldım.'">
+            <img src="{% static 'blog_app/images/art3.svg' %}" class="canBlurImage"
+                alt="Zihnin yazmayı bırakmak için çok kalabalık.">
+            <div class="feed">
+                {%for post in posts%}
+                <div class="post">
+                    <div class="post_header">
+                        <span class="author">@{{ post.author.username }}</span>
+                        <span class="date">{{ post.created_at|date:"d M Y H:i" }}</s>
+                    </div>
+                    <div class="post_content">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <!-- <div class="post-actions">
+                    <button class="like-btn">♡ Beğen</button>
+                    <button class="comment-btn">💬 Yorum Yap</button>
+                    <button class="share-btn">↻ Paylaş</button>
+                </div> -->
+                    <div class="empty_feed">
+                        <p>Henüz paylaşım yok.</p>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+            <div class="column3">
+                <img src="{% static 'blog_app/images/image.svg' %}" class="line_image"
+                    alt="Herlsin anlatacak bir hikayesi var.">
+                <button id="newPost" class="button">Yazacaklarım Var!</button>
+            </div>
         </div>
-        <div class="column3">
-
-            <div class="post">Post 3</div>
-        </div>
-    </div>
 
 </body>
 
