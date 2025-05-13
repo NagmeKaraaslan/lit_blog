@@ -7,13 +7,10 @@ from django.contrib.auth.decorators import login_required
 class PostListView(ListView):
     model = Posttemplate_name = 'blog_app/main.html'
     context_object_name = 'posts'
-    order,ng = ['-created_at']
+    ordering = ['-created_at']
 
-#@login_required def new_post(request)
-
-
-def blog_home(request):
-    return render(request, 'blog_app/index.html')
+def blog_index(request):
+    return render(request, 'blog/index.html')
 
 def main(request):
     posts = Post.objects.all().order_by('-created_at')
@@ -29,4 +26,7 @@ def new_post(request):
             return redirect('main')
         else:
             form = PostForm()
-        return render(request, 'blog_App/main.html', {'form': form})
+        return render(request, 'blog_App/newpost.html', {'form': form})
+    
+def newpost_view(request):
+    return render(request,'blog_app/newpost.html')
