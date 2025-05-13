@@ -43,8 +43,10 @@
             </div>
             <div class="column3">
                 <img src="{% static 'blog_app/images/image.svg' %}" class="line_image"
-                    alt="Herlsin anlatacak bir hikayesi var.">
-                <button id="newPost" class="button">Yazacaklarım Var!</button>
+                    alt="Herkesin anlatacak bir hikayesi var.">
+                <a href="{% url 'newpost' %}">
+                    <button id="newPost" class="button">Yazacaklarım Var!</button>
+                </a>
             </div>
         </div>
 

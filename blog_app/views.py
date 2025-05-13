@@ -9,6 +9,9 @@ class PostListView(ListView):
     context_object_name = 'posts'
     ordering = ['-created_at']
 
+def blog_home(request):
+    return render(request, 'blog_app/index.html')
+
 def blog_index(request):
     return render(request, 'blog/index.html')
 
@@ -30,3 +33,6 @@ def new_post(request):
     
 def newpost_view(request):
     return render(request,'blog_app/newpost.html')
+
+def main_page(request):
+    return render(request, 'blog_app/main.html')

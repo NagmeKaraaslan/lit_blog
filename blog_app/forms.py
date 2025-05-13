@@ -7,9 +7,9 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'content']
         widgets = {
             'content' : forms.Textarea(attrs={
-                'class': 'Başlık girmek ister misin ?',
+                'class': 'yeni içerik',
                 'rows': 5,
-                'placeholder': 'İçeriğinizi yazın.',
+                'placeholder': 'Yeni yazım:',
             })
         }
         labels = {
