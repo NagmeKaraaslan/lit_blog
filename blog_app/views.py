@@ -4,12 +4,14 @@ from .models import Post
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 
+
 class PostListView(ListView):
-    model = Posttemplate_name = 'blog_app/main.html'
+    model = Post
+    template_name = 'blog_app/main.html'
     context_object_name = 'posts'
     ordering = ['-created_at']
 
-def blog_home(request):
+def home(request):
     return render(request, 'blog_app/index.html')
 
 def blog_index(request):
@@ -27,10 +29,10 @@ def new_post(request):
             post.author = request.user
             post.save()
             return redirect('main')
-        else:
-            form = PostForm()
-        return render(request, 'blog_App/newpost.html', {'form': form})
-    
+    else:
+        form = PostForm()
+    return render(request, 'blog_app/newpost.html', {'form': form})
+
 def newpost_view(request):
     return render(request,'blog_app/newpost.html')
 

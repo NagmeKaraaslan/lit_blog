@@ -1,8 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
-urlpatterns= [
-    path('main/', views.main_page, name='blog_main'),
-    path( 'newpost/', views.new_post, name='newpost'),
-    path('', include('blog_app.urls')),
+app_name = 'blog_app'
+
+urlpatterns = [
+    path('', views.main_page, name='main_page'),
+    path('new-post/', views.new_post, name='new_post'),
 ]
