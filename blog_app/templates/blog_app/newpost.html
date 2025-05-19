@@ -1,4 +1,44 @@
-{% extends 'blog_app/main.html' %}
-{% block content %}
-<!-- Tasarım daha sonra eklenecek -->
-{% endblock %}
+{%load static%}
+<link rel="stylesheet" href="{% static 'newpost.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <p>Yeni yazını okumak için sabırsızlanıyoruz!</p>
+            <button class="button" type="submit">Gönder!</button>
+            <button class="button" type="button" id="cancel" onclick="openModal()">Vazgeçtim.</button>
+        </div>
+        <div class="right-panel">
+            <div class="form-box">
+                <textarea placeholder="Yeni yazım:"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p>Merak etme!<br>
+                İlham bazen gelir, bazen kaçar; hatta bir ışık misali yanıp sönebilir. Tekrar yazmaya karar verdiğinde
+                biz onu okumak için yine burada olacağız.<br>
+                Ama yazmaya devam etmek istersen hemen aşağıdaki butonlardan da <strong>devam et</strong>e basabilirsin.
+                <br>
+                Ya da <strong>Eminim</strong> butonuna basarak form sayfasından çıkabilirsin :)<br><br>
+                Kaleminle kal.
+            </p>
+            <div class="modal-buttons">
+                <button id="keepWritin" onclick="closeModal()">Yazmaya Devam Et</button>
+                <button id="sureCancel" onclick="window.location.href='main.html'">Eminim</button>
+            </div>
+        </div>
+    </div>
+
+
+</html>

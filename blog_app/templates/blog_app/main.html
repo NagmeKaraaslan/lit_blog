@@ -11,48 +11,26 @@
 
 <body>
     <div class="container">
-        <div class="column1">
-            <h3>~Son Paylaşımlar~</h3>
-            <img src="{% static 'images/image1.svg' %}" class="line_image" alt="'Sanatın kuralı yoktur.'">
-            <div class="post">Post 1</div>
+        <div class="background">
+            <img src="{% static 'images/image2.jpg' %}" class="butterfly" alt="Butterfly">
+            <img src="{% static 'images/image3.svg' %}" class="left-image" alt="Art Has No Rules">
         </div>
-        <div class="column2">
-            <img src="{% static 'images/image2.svg' %}" class="canBlurImage" alt="'Ben yaratmak için yaratıldım.'">
-            <img src="{% static 'images/image3.svg' %}" class="canBlurImage"
-                alt="Zihnin yazmayı bırakmak için çok kalabalık.">
-            <div class="feed">
-                {% for post in posts %}
-                <div class="post">
-                    <div class="post_header">
-                        <span class="author">@{{ post.author.username }}</span>
-                        <span class="date">{{ post.created_at|date:"d M Y H:i" }}</span>
-                    </div>
-                    <div class="post_content">
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.content }}</p>
-                    </div>
-                    <!-- <div class="post-actions">
-                    <button class="like-btn">♡ Beğen</button>
-                    <button class="comment-btn">💬 Yorum Yap</button>
-                    <button class="share-btn">↻ Paylaş</button>
-                </div> -->
-                </div>
-                {% empty %}
-                <div class="empty_feed">
-                    <p>Henüz paylaşım yok.</p>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="column3">
-                <img src="{% static 'images/image4.svg' %}" class="line_image"
-                    alt="Herkesin anlatacak bir hikayesi var.">
-                <a href="{% url 'blog_app:new_post' %}">
-                    <button id="newPost" class="button">Yazacaklarım Var!</button>
-                </a>
-            </div>
+        <div class="header-text">Son Paylaşımlar =</div>
+        {% if posts %}
+        {% for post in posts %}
+        <div class="post">
+            <p><small>{{ post.created_at|date:'d M Y H:i' }}</small></p>
+            <p>{{ post.content|truncatewords:50 }}</p>
         </div>
-
-        <script src="{% static 'js/main.js' %}"></script>
+        {% endfor %}
+        {% else %}
+        <p style="text-align: center;">Henüz kimse yazı paylaşmadı...</p>
+        {% endif %}
+        <a href="{% url 'blog_app:new_post' %}" style="text-decoration: none; color: inherit;">
+            <button class="write-button">Yazacaklarım Var !</button>
+        </a>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

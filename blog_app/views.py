@@ -17,8 +17,8 @@ def home(request):
 def blog_index(request):
     return render(request, 'blog/index.html')
 
-def main(request):
-    posts = Post.objects.all().order_by('-created_at')
+def main_page(request):
+    posts = Post.objects.filter(published=True).order_by('-created_at')
     return render(request, 'blog_app/main.html', {'post':posts})
 
 def new_post(request):
@@ -28,7 +28,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('main')
+            return redirect('main_page')
     else:
         form = PostForm()
     return render(request, 'blog_app/newpost.html', {'form': form})
