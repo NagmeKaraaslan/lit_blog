@@ -18,9 +18,12 @@
             <button class="button" type="button" id="cancel" onclick="openModal()">Vazgeçtim.</button>
         </div>
         <div class="right-panel">
-            <div class="form-box">
-                <textarea placeholder="Yeni yazım:"></textarea>
-            </div>
+            <form method="POST" action="{% url 'blog_app:new_post' %}">
+                {% csrf_token %}
+                <div class="form-box">
+                    <textarea placeholder="Yeni yazım:"></textarea>
+                </div>
+            </form>
         </div>
     </div>
 
