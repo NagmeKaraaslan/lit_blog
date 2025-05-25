@@ -1,5 +1,4 @@
 {%load static%}
-<link rel="stylesheet" href="{% static 'newpost.css' %}">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'newpost.css' %}">
     <script src="{% static 'newpost.js' %}" defer></script>
 </head>
 
@@ -14,14 +14,16 @@
     <div class="container">
         <div class="left-panel">
             <p>Yeni yazını okumak için sabırsızlanıyoruz!</p>
-            <button class="button" type="submit">Gönder!</button>
+
             <button class="button" type="button" id="cancel" onclick="openModal()">Vazgeçtim.</button>
+            <button class="button" type="submit">Gönder!</button>
         </div>
         <div class="right-panel">
             <form method="POST" action="{% url 'blog_app:new_post' %}">
                 {% csrf_token %}
+                {{ form.as_p }}
                 <div class="form-box">
-                    <textarea placeholder="Yeni yazım:"></textarea>
+                    <textarea name="content" placeholder="Yeni yazım:"></textarea>
                 </div>
             </form>
         </div>
@@ -39,7 +41,7 @@
             </p>
             <div class="modal-buttons">
                 <button id="keepWritin" onclick="closeModal()">Yazmaya Devam Et</button>
-                <button id="sureCancel" onclick="window.location.href='main.html'">Eminim</button>
+                <button id="sureCancel" onclick="window.location.href='{% url 'blog_app:main_page' %}'">Eminim</button>
             </div>
         </div>
     </div>
