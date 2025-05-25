@@ -16,7 +16,7 @@ class PostListView(ListView):
 
 def main_page(request):
     posts = Post.objects.filter(published=True).order_by('-created_at')
-    return render(request, 'blog_app/main.html', {'post':posts})
+    return render(request, 'blog_app/main.html', {'posts':posts})
 
 from django.views.decorators.csrf import csrf_protect
 
