@@ -14,15 +14,14 @@
     <div class="container">
         <div class="left-panel">
             <p>Yeni yazını okumak için sabırsızlanıyoruz!</p>
-
-            <button class="button" type="submit">Gönder!</button>
             <button class="button" type="button" id="cancel" onclick="openModal()">Vazgeçtim.</button>
+            <button class="button" id="submitBtn" type="submit" onclick="sendPost()">Gönder!</button>
         </div>
         <div class="right-panel">
             <form method="POST" action="{% url 'blog_app:new_post' %}">
                 {% csrf_token %}
                 <div class="form-box">
-                    <textarea name="content" placeholder="Yeni yazım:"></textarea>
+                    <textarea id="content" placeholder="Yeni yazım:"></textarea>
                 </div>
             </form>
         </div>
@@ -45,5 +44,6 @@
         </div>
     </div>
 
+</body>
 
 </html>
