@@ -6,14 +6,17 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'content']
         widgets = {
-            'content' : forms.Textarea(attrs={
+            'title': forms.TextInput(attrs={
+                'class': 'title-input',
+                'placeholder': 'Başlık giriniz',
+            }),
+            'content': forms.Textarea(attrs={
                 'class': 'yeni içerik',
                 'rows': 5,
                 'placeholder': 'Yeni yazım:',
-            })
+            }),
         }
         labels = {
-            'title':'',
-            'contenet':'',
+            'title': '',
+            'content': '',
         }
-        
