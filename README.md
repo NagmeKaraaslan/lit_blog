@@ -19,7 +19,7 @@ blog/
 ├── manage.py          -> Django management script
 └── .env               -> Environment variables
 
-### Note on .env field:
+### Note on venv field:
 
 Instead of installing Django globally, I chose to install it in a virtual environment to keep dependencies isolated and better managed.
 
